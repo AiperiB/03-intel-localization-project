@@ -512,3 +512,194 @@ body > p {
   min-height: 60px; /* Minimum height */
   width: 100%; /* Full width */
 }
+
+
+/* RTL Support Styles */
+.rtl-enabled {
+  direction: rtl;
+  text-align: right;
+}
+
+.rtl-enabled .modal-content {
+  text-align: right;
+}
+
+.rtl-enabled .timeline-card {
+  direction: rtl;
+}
+
+/* Fix Bootstrap grid for RTL */
+.rtl-enabled .row {
+  direction: rtl;
+}
+
+.rtl-enabled .col-md-4 {
+  float: right;
+}
+
+/* Modal adjustments */
+.rtl-enabled .modal-close {
+  left: 1rem;
+  right: auto;
+}
+
+/* =============================================
+   ENHANCED "LEARN MORE" LINKS STYLING
+   ============================================= */
+
+.learn-more {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border-radius: 50px;
+  padding: 10px 24px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.learn-more:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 113, 197, 0.25);
+  padding-right: 30px;
+  padding-left: 18px;
+}
+
+.learn-more i {
+  transition: transform 0.3s ease;
+}
+
+.learn-more:hover i {
+  transform: translateX(4px);
+}
+
+/* RTL support for "Learn More" buttons */
+.rtl-enabled .learn-more:hover {
+  padding-right: 18px;
+  padding-left: 30px;
+}
+
+.rtl-enabled .learn-more:hover i {
+  transform: translateX(-4px);
+}
+
+/* =============================================
+   RTL SUPPORT FOR 3-COLUMN SECTION
+   ============================================= */
+
+.rtl-enabled .container .row {
+  direction: rtl;
+}
+
+.rtl-enabled .col-md-4 {
+  text-align: right;
+}
+
+.rtl-enabled .col-md-4 h2 {
+  text-align: right;
+}
+
+.rtl-enabled .col-md-4 i {
+  margin-left: 8px;
+  margin-right: 0;
+}
+
+/* RTL for subscription form */
+.rtl-enabled .container form .col-md-8 input {
+  text-align: right;
+}
+
+.rtl-enabled .container form .col-md-4 button i {
+  margin-left: 6px;
+  margin-right: 0;
+}
+
+/* RTL for footer */
+.rtl-enabled footer .container {
+  direction: rtl;
+}
+
+.rtl-enabled footer nav a {
+  margin-left: 16px;
+  margin-right: 0;
+}
+
+.rtl-enabled footer nav a:last-child {
+  margin-left: 0;
+}
+
+/* =============================================
+   MODAL ENHANCEMENTS
+   ============================================= */
+
+.modal-content {
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.modal-header {
+  background: linear-gradient(135deg, #0071c5, #00a4ef);
+  color: white;
+  border-bottom: none;
+  padding: 20px 24px;
+}
+
+.modal-header .btn-close {
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+}
+
+.modal-header .btn-close:hover {
+  opacity: 1;
+}
+
+.modal-body {
+  padding: 30px;
+}
+
+.modal-body h3 {
+  color: #0071c5;
+  font-weight: 700;
+}
+
+.modal-body p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #444;
+}
+
+/* RTL modal support */
+.rtl-enabled .modal-header {
+  text-align: right;
+  direction: rtl;
+}
+
+.rtl-enabled .modal-body {
+  text-align: right;
+  direction: rtl;
+}
+
+.rtl-enabled .modal-body p {
+  text-align: right;
+}
+
+/* =============================================
+   RESPONSIVE TWEAKS
+   ============================================= */
+
+@media (max-width: 768px) {
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .modal-body p {
+    font-size: 14px;
+  }
+  
+  .learn-more {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}
