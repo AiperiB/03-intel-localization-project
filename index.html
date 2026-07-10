@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intel: Sustainability Through the Ages</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header / Hero Section -->
+  <header>
+    <div>
+      <!-- Ask Copilot to teach you about `.svg`. 🙂 You'll need to resize the logo with CSS. -->
+      <img src="img/intel-header-logo.svg" alt="Intel Logo" />
+      <!-- Main Heading -->
+      <h1>
+        Sustainability Through the Ages
+      </h1>
+
+      <!-- Subheading / Description -->
+      <p>
+        Explore Intel's journey through time, discovering how our commitment
+        to innovation has shaped a more sustainable future for technology 
+        and our planet.
+      </p>
+    </div>
+  </header>
+
+  <!-- Timeline Cards Section -->
+  <section>
+
+    <!-- Card 1: 1968 -->
+    <div class="timeline-card">
+      <h2>1968</h2>
+      <h3>Intel Founded</h3>
+      <img src="img/1968.png" class="responsive-img" alt="Intel founded in 1968">
+
+      <p>
+        Robert Noyce and Gordon Moore rename the newly formed company 
+        NM Electronics to Intel Corporation, laying the foundation for 
+        decades of technological innovation.
+      </p>
+    </div>
+
+    <!-- Card 2: 1971 -->
+    <div class="timeline-card">
+      <h2>1971</h2>
+      <h3>First Microprocessor</h3>
+      <img src="img/1971.png" class="responsive-img" alt="Intel launched the first commercial microprocessor">
+      <p>
+        Intel debuts the 4004, the world's first commercial microprocessor, 
+        igniting the microprocessor revolution and propelling the future 
+        of computing devices.
+      </p>
+    </div>
+
+    <!-- Card 3: 1978 -->
+    <div class="timeline-card">
+      <h2>1978</h2>
+      <h3>8086 Processor</h3>
+      <img src="img/1978.png" class="responsive-img" alt="Intel 8086 processor launch">
+      <p>
+        Launch of the 8086 processor, establishing the x86 architecture 
+        that drives countless PCs and servers in the modern era.
+      </p>
+    </div>
+
+    <!-- Card 4: 1985 -->
+    <div class="timeline-card">
+      <h2>1985</h2>
+      <h3>386 Processor</h3>
+      <img src="img/1985.jpeg" class="responsive-img" alt="Intel 386 processor introduced in 1985">
+      <p>
+        Intel introduces the 386 processor with 32-bit architecture, 
+        ushering in a new era of performance and multitasking for 
+        personal computers.
+      </p>
+    </div>
+
+    <!-- Card 5: 2006 -->
+    <div class="timeline-card">
+      <h2>2006</h2>
+      <h3>Peak GHG Emissions</h3>
+      <img src="img/2006.jpeg" class="responsive-img" alt="Intel's peak greenhouse gas emissions year">
+      <p>
+        This year marks Intel's highest annual greenhouse gas emissions 
+        for operations. Over subsequent years, Intel invests heavily in 
+        chemical abatement, renewable energy, and energy-efficient 
+        manufacturing to reverse this trend.
+      </p>
+    </div>
+
+    <!-- Card 6: 2020 -->
+    <div class="timeline-card">
+      <h2>2020</h2>
+      <h3>RISE Strategy</h3>
+      <img src="img/2020.jpeg" class="responsive-img" alt="Intel launches its RISE sustainability strategy">
+      <p>
+        Intel launches its RISE (Responsible, Inclusive, Sustainable, 
+        Enabling) strategy and 2030 goals, aiming to drive industry-wide 
+        progress on climate action, water stewardship, and waste reduction.
+      </p>
+    </div>
+
+    <!-- Card 7: 2022 -->
+    <div class="timeline-card">
+      <h2>2022</h2>
+      <h3>Net-Zero By 2040</h3>
+      <img src="img/2022.jpeg" class="responsive-img" alt="Intel commits to net-zero emissions by 2040">
+      <p>
+        Intel announces its commitment to achieve net-zero greenhouse 
+        gas emissions (Scope 1 and 2) across its global operations 
+        by 2040, building on years of environmental initiatives.
+      </p>
+    </div>
+
+    <!-- Card 8: 2023 -->
+    <div class="timeline-card">
+      <h2>2023</h2>
+      <h3>Renewable Electricity</h3>
+      <img src="img/2023.jpeg" class="responsive-img" alt="Intel reaches 99 percent renewable electricity usage">
+      <p>
+        The company achieves 99% renewable electricity usage worldwide, 
+        helping to drastically lower carbon emissions and driving progress 
+        toward Intel's long-term sustainability goals.
+      </p>
+    </div>
+
+    <!-- Card 9: 2024 -->
+    <div class="timeline-card">
+      <h2>2024</h2>
+      <h3>Sustainability Summit</h3>
+      <img src="img/2024.jpeg" class="responsive-img" alt="Intel hosts its first sustainability summit">
+      <p>
+        Intel hosts its first Sustainability Summit, uniting suppliers, 
+        government officials, and industry leaders to collaborate on 
+        next-generation sustainable semiconductor manufacturing.
+      </p>
+    </div>
+  </section>
+
+  <div id="cardModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalYear">
+      <button class="modal-close" type="button" aria-label="Close details">×</button>
+      <img id="modalImage" class="modal-image" src="" alt="">
+      <div class="modal-body">
+        <h2 id="modalYear"></h2>
+        <h3 id="modalTitle"></h3>
+        <p id="modalText"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const cards = document.querySelectorAll('.timeline-card');
+    const modal = document.getElementById('cardModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalYear = document.getElementById('modalYear');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalText = document.getElementById('modalText');
+    const closeButton = document.querySelector('.modal-close');
+
+    function openModal(card) {
+      const year = card.querySelector('h2').textContent;
+      const title = card.querySelector('h3').textContent;
+      const image = card.querySelector('img');
+      const description = card.querySelector('p').textContent;
+
+      modalYear.textContent = year;
+      modalTitle.textContent = title;
+      modalImage.src = image.src;
+      modalImage.alt = `${year} ${title}`;
+      modalText.textContent = description;
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+    }
+
+    cards.forEach((card) => {
+      card.addEventListener('click', () => openModal(card));
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+
+      card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openModal(card);
+        }
+      });
+    });
+
+    closeButton.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    });
+  </script>
+
+  <p>Click any card to open a larger view | Scroll to explore the timeline</p>
+</body>
+</html>
