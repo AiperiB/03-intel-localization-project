@@ -215,10 +215,11 @@
   <p>Click any card to open a larger view | Scroll to explore the timeline</p>
 
   <!-- 3-Column Content Section -->
-  <section class="container py-5 d-block" dir="rtl">
-    <div class="row g-4">
+  <section class="container py-5 info-grid-section">
+    <div class="row g-4 align-items-stretch">
       <!-- Column 1 -->
-      <div class="col-12 col-md-4">
+      <div class="col-12 col-md-4 d-flex">
+        <div class="info-grid-card w-100">
         <h2>RISE Strategy</h2>
         <p>
           Under its RISE (Responsible, Inclusive, Sustainable, Enabling) strategy,
@@ -226,10 +227,12 @@
           progress on climate action, water stewardship, and waste reduction.
         </p>
         <a href="#" class="btn btn-outline-primary mt-3">Learn More</a>
+        </div>
       </div>
 
       <!-- Column 2 -->
-      <div class="col-12 col-md-4">
+      <div class="col-12 col-md-4 d-flex">
+        <div class="info-grid-card w-100">
         <h2>Commitment</h2>
         <p>
           In 2022, Intel pledged to achieve net-zero greenhouse gas emissions
@@ -238,10 +241,12 @@
           industry.
         </p>
         <a href="#" class="btn btn-outline-primary mt-3">Learn More</a>
+        </div>
       </div>
 
       <!-- Column 3 -->
-      <div class="col-12 col-md-4">
+      <div class="col-12 col-md-4 d-flex">
+        <div class="info-grid-card w-100">
         <h2>Water &amp; Waste</h2>
         <p>
           Intel conserves billions of gallons of water annually and
@@ -250,12 +255,13 @@
           advance a circular economy.
         </p>
         <a href="#" class="btn btn-outline-primary mt-3">Learn More</a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Subscription Form -->
-  <section class="container py-5 d-block" dir="rtl">
+  <section class="container py-5 d-block">
     <div class="mx-auto" style="max-width: 600px;">
       <h2 class="h3 mb-3">Subscribe to our Newsletter</h2>
       <p class="text-muted mb-4">
@@ -280,7 +286,58 @@
     </div>
   </section>
 
-  <footer class="bg-dark text-white py-4 mt-4" dir="rtl">
+  <!-- FAQ Accordion Section -->
+  <div class="container py-5">
+    <div class="mx-auto" style="max-width: 800px;">
+      <h2 class="h3 mb-3">Frequently Asked Questions</h2>
+      <p class="text-muted mb-4">
+        Expand each question to learn more about the timeline and Intel's sustainability goals.
+      </p>
+
+      <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqHeadingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseOne" aria-expanded="true" aria-controls="faqCollapseOne">
+              What is Intel's RISE strategy?
+            </button>
+          </h2>
+          <div id="faqCollapseOne" class="accordion-collapse collapse show" aria-labelledby="faqHeadingOne" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              RISE stands for Responsible, Inclusive, Sustainable, and Enabling. It guides Intel's 2030 goals for climate action, water stewardship, and waste reduction.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqHeadingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
+              Why is the 2022 milestone important?
+            </button>
+          </h2>
+          <div id="faqCollapseTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadingTwo" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              In 2022, Intel committed to net-zero greenhouse gas emissions for Scope 1 and 2 by 2040, building on years of environmental work.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqHeadingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree">
+              How does this page support an RTL experience?
+            </button>
+          </h2>
+          <div id="faqCollapseThree" class="accordion-collapse collapse" aria-labelledby="faqHeadingThree" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              A small JavaScript detector watches for language changes and updates the page direction so translated content can switch between left-to-right and right-to-left layouts.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-white py-4 mt-4">
     <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
       <p class="mb-0">© 2026 Intel Corporation. All rights reserved.</p>
       <nav>
@@ -292,123 +349,90 @@
   </footer>
 
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-// 1. List of standard Right-to-Left language codes
-function isRTL(lang) {
-  const rtlLanguages = ['ar', 'he', 'fa', 'ur', 'dv', 'ha', 'ps', 'yi'];
-  return rtlLanguages.some(rtl => lang.toLowerCase().startsWith(rtl));
-}
+    (function () {
+      'use strict';
 
-// 2. Function to update the DOM direction
-function applyRTL(shouldApply) {
-  if (shouldApply) {
-    document.documentElement.dir = 'rtl';
-    document.documentElement.classList.add('rtl-mode'); // Optional: for custom CSS tweaks
-  } else {
-    document.documentElement.dir = 'ltr';
-    document.documentElement.classList.remove('rtl-mode');
-  }
-}
+      const rtlLanguages = new Set(['ar', 'he', 'fa', 'ur', 'yi', 'ps', 'ku', 'dv']);
+      let animationFrameId = 0;
 
-// 3. Main orchestration function called by your observer
-function detectAndApplyRTL() {
-  const htmlLang = document.documentElement.lang || 'en';
-  applyRTL(isRTL(htmlLang));
-}
-// =============================================
-// Auto RTL Detector for Google Translate
-// =============================================
-
-(function() {
-  'use strict';
-
-  // RTL language codes
-  const rtlLanguages = ['ar', 'he', 'fa', 'ur', 'yi', 'ps', 'ku'];
-
-  function isRTL(lang) {
-    const normalized = lang.split('-')[0].toLowerCase();
-    return rtlLanguages.includes(normalized);
-  }
-
-  function applyRTL(enabled) {
-    const html = document.documentElement;
-    if (enabled) {
-      html.setAttribute('dir', 'rtl');
-      html.setAttribute('lang', document.documentElement.lang || 'ar');
-      document.body.classList.add('rtl-enabled');
-    } else {
-      html.setAttribute('dir', 'ltr');
-      html.classList.remove('rtl-enabled');
-    }
-  }
-
-  function detectAndApplyRTL() {
-    // Check Google Translate's meta tag
-    const meta = document.querySelector('meta[name="google-translate-custom"]');
-    const googleLang = meta ? meta.getAttribute('content') : null;
-
-    // Check HTML lang attribute
-    const htmlLang = document.documentElement.lang;
-
-    // Check URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const urlLang = urlParams.get('lang');
-
-    // Check Google Translate DOM changes
-    const translateElement = document.querySelector('.goog-te-menu-frame');
-    const detectedLang = googleLang || htmlLang || urlLang || 'en';
-
-    if (isRTL(detectedLang)) {
-      applyRTL(true);
-      console.log(`🔁 RTL applied for language: ${detectedLang}`);
-    } else {
-      applyRTL(false);
-      console.log(`🔁 LTR applied for language: ${detectedLang}`);
-    }
-  }
-
-  // Run on page load
-  document.addEventListener('DOMContentLoaded', detectAndApplyRTL);
-
-  // Detect Google Translate changes using MutationObserver
-  const observer = new MutationObserver(function(mutations) {
-    mutations.forEach(function(mutation) {
-      if (mutation.type === 'attributes' && 
-          mutation.attributeName === 'lang' ||
-          mutation.target.tagName === 'HTML') {
-        detectAndApplyRTL();
+      function normalizeLanguage(language) {
+        return (language || '').trim().split('-')[0].toLowerCase();
       }
-    });
-  });
 
-  observer.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ['lang']
-  });
-
-  // Detect Google Translate dropdown changes
-  setInterval(function() {
-    const meta = document.querySelector('meta[name="google-translate-custom"]');
-    if (meta) {
-      const currentLang = meta.getAttribute('content');
-      const htmlLang = document.documentElement.lang;
-      if (htmlLang && isRTL(htmlLang)) {
-        applyRTL(true);
+      function isRTL(language) {
+        return rtlLanguages.has(normalizeLanguage(language));
       }
-    }
-  }, 2000);
 
-  // Listen for custom events
-  document.addEventListener('languageChanged', function(e) {
-    const lang = e.detail.language || document.documentElement.lang;
-    applyRTL(isRTL(lang));
-  });
+      function getCookieLanguage() {
+        const match = document.cookie.match(/(?:^|;\s*)googtrans=\/[^/]+\/([^;]+)/);
+        return match ? match[1] : '';
+      }
 
-  // Trigger manually from console: dispatchEvent(new CustomEvent('languageChanged', { detail: { language: 'ar' } }));
+      function getDetectedLanguage() {
+        const translateCombo = document.querySelector('.goog-te-combo');
+        const htmlLang = document.documentElement.getAttribute('lang');
+        const bodyLang = document.body ? document.body.getAttribute('lang') : '';
 
-  console.log('🌐 Auto RTL Detector initialized');
-})();
-</script>
+        return normalizeLanguage(
+          (translateCombo && translateCombo.value) ||
+          getCookieLanguage() ||
+          htmlLang ||
+          bodyLang ||
+          'en'
+        );
+      }
+
+      function applyDirection(shouldUseRTL) {
+        const html = document.documentElement;
+        const body = document.body;
+
+        html.setAttribute('dir', shouldUseRTL ? 'rtl' : 'ltr');
+        html.classList.toggle('rtl-mode', shouldUseRTL);
+
+        if (body) {
+          body.classList.toggle('rtl-enabled', shouldUseRTL);
+          body.setAttribute('dir', shouldUseRTL ? 'rtl' : 'ltr');
+        }
+      }
+
+      function syncDirection() {
+        applyDirection(isRTL(getDetectedLanguage()));
+      }
+
+      function scheduleSync() {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = requestAnimationFrame(syncDirection);
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        syncDirection();
+
+        const observer = new MutationObserver(function () {
+          scheduleSync();
+        });
+
+        observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ['lang'],
+          childList: true,
+          subtree: true,
+        });
+
+        setInterval(function () {
+          scheduleSync();
+        }, 1000);
+
+        document.addEventListener('languageChanged', function (event) {
+          const language = event.detail && event.detail.language ? event.detail.language : document.documentElement.lang;
+          applyDirection(isRTL(language));
+        });
+
+        console.log('Auto RTL detector initialized');
+      });
+    }());
+  </script>
 
 
 </body>
